@@ -8,3 +8,8 @@ const bucket = new gcp.storage.Bucket("my-bucket", {
 
 // Export the DNS name of the bucket
 export const bucketName = bucket.url;
+
+const bucketObject = new gcp.storage.BucketObject("../index.html", {
+    bucket: bucket.name,
+    source: new pulumi.asset.FileAsset("../index.html")
+});
